@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Registration Portal</title>
+</head>
+<body>
+
+    <h1>E-Learning Course Registration</h1>
+    
+    <p>Enrollment Progress:</p>
+    <progress value="50" max="100"></progress>
+    <hr>
+
+    <h3>Introduction Video</h3>
+    <video width="400" controls>
+        <source src="intro-video.mp4" type="video/mp4">
+        <track src="subtitles_en.vtt" kind="subtitles" srclang="en" label="English">
+    </video>
+
+    <hr>
+
+    <form action="#">
+        
+        <p>
+            <label for="course">Select Course:</label><br>
+            <input list="courses" id="course" name="course" required>
+            <datalist id="courses">
+                <option value="HTML5 Basics">
+                <option value="Advanced CSS">
+                <option value="JavaScript for Beginners">
+                <option value="Angular Development">
+            </datalist>
+        </p>
+
+        <p>
+            <label for="batch">Select Batch Month:</label><br>
+            <input type="month" id="batch" name="batch" required>
+        </p>
+
+        <p>
+            <label for="time">Preferred Session Timing:</label><br>
+            <input type="time" id="time" name="time" required>
+        </p>
+
+        <p>
+            <label for="skill">Rate your Skill Level (1-10):</label><br>
+            <input type="range" id="skill" name="skill" min="1" max="10" value="5">
+            <br>
+            Visual Meter: <meter min="0" max="10" value="5"></meter>
+        </p>
+
+        <button type="submit">Enroll Now</button>
+    </form>
+
+</body>
+</html>

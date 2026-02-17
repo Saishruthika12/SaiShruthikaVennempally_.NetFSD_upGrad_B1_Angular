@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Account Opening Form</title>
+</head>
+<body>
+
+    <h2>Digital Banking Account Opening</h2>
+    <p>Please fill out the form below to open your savings account.</p>
+    <hr>
+
+    <form action="#" method="post">
+        
+        <label for="fullname">Full Name:</label><br>
+        <input type="text" id="fullname" name="fullname" required>
+        <br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+
+        <label for="phone">Phone Number:</label><br>
+        <input type="tel" id="phone" name="phone" required>
+        <br><br>
+
+        <label for="pan">PAN Number:</label><br>
+        <input type="text" id="pan" name="pan" 
+               pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" 
+               title="Please enter a valid PAN (e.g., ABCDE1234F)" required>
+        <br><br>
+
+        <label for="ifsc">IFSC Code:</label><br>
+        <input type="text" id="ifsc" name="ifsc" 
+               pattern="[A-Z]{4}[0-9]{7}" 
+               title="4 letters followed by 7 digits" required>
+        <br><br>
+
+        <label for="account">Account Type:</label><br>
+        <input list="account-types" id="account" name="account" required>
+        <datalist id="account-types">
+            <option value="Savings Account">
+            <option value="Current Account">
+            <option value="Salary Account">
+            <option value="Fixed Deposit">
+        </datalist>
+        <br><br>
+
+        <label for="dob">Date of Birth:</label><br>
+        <input type="date" id="dob" name="dob" max="2008-01-01" required>
+        <br><br>
+
+        <label for="income">Monthly Income:</label><br>
+        <input type="number" id="income" name="income" step="5000" min="0" required>
+        <br><br>
+
+        <label for="id-proof">Upload ID Proof:</label><br>
+        <input type="file" id="id-proof" name="id-proof" required>
+        <br><br>
+
+        <hr>
+        <button type="submit">Open Account</button>
+
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+/* 1. Universal Selector (*) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Requirement: Apply box-sizing */
+}
+
+/* 2. ID Selector (#hero) */
+#hero {
+    height: 300px;
+    background-color: #f4f4f4;
+    padding: 50px;
+}
+
+/* 3. Class Selector (.course) & Layout (Flexbox) */
+.course-container {
+    display: flex; /* Requirement: Use flexbox */
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.course {
+    border: 2px solid #333; /* Requirement: Box Model Border */
+    padding: 15px;           /* Requirement: Box Model Padding */
+    margin: 10px;            /* Requirement: Box Model Margin */
+    width: 250px;            /* Requirement: Fixed Width */
+    transition: transform 0.3s;
+}
+
+/* 4. Child Selector (.course > h3) */
+.course > h3 {
+    color: darkblue;
+}
+
+/* 5. Adjacent Sibling Selector (h3 + p) */
+h3 + p {
+    font-style: italic;
+}
+
+/* 6. Pseudo-classes */
+a:hover {
+    color: orange; /* Requirement: a:hover */
+}
+
+li:first-child {
+    font-weight: bold; /* Requirement: li:first-child */
+}
+
+/* Layout Task: Hover effect and button styling */
+.course:hover {
+    background-color: #e0f7fa;
+    transform: translateY(-5px);
+}
+
+.btn-main {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Bonus Challenge: First and Last course colors */
+.course:first-of-type {
+    background-color: #ffeb3b;
+}
+
+.course:last-of-type {
+    background-color: #8bc34a;
+}

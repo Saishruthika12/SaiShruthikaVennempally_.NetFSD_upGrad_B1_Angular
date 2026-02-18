@@ -1,0 +1,58 @@
+/* Box Model Requirement: Global reset and border-box */
+* {
+    box-sizing: border-box; /* Must use border-box */
+    margin: 0;
+    padding: 0;
+}
+
+/* 1. Element Selector */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+}
+
+/* 2. Class Selector & Box Model for Summary Cards */
+.card {
+    margin: 20px;          /* Margin Requirement */
+    padding: 15px;         /* Padding Requirement */
+    border: 1px solid #ddd; /* Border Requirement */
+    border-radius: 8px;    /* Border Radius Requirement */
+    background: #fff;
+}
+
+/* 3. ID Selector */
+#transactions {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* 4. Descendant Selector (Nav links inside sidebar) */
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* 5. Group Selector */
+h1, h3, footer {
+    color: #2c3e50;
+}
+
+/* 6. Attribute Selector */
+input[type="password"] {
+    border: 2px solid #3498db;
+    padding: 5px;
+}
+
+/* 7. Pseudo-class (hover on rows) */
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* 8. Pseudo-class (active button) */
+button:active {
+    transform: scale(0.98);
+}
+
+/* Advanced Styling: Debit vs Credit colors */
+.debit { color: #e74c3c; }
+.credit { color: #27ae60; }

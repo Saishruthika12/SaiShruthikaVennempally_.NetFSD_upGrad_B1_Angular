@@ -1,0 +1,83 @@
+/* --- External CSS: Main Styling --- */
+
+/* Element Selector */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+/* Group Selector */
+h1, h2, h3 {
+    color: #0d47a1;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background-color: #f0f4f8;
+}
+
+.banner {
+    padding: 60px;
+    text-align: center;
+    background-color: #bbdefb;
+}
+
+/* BOX MODEL PRACTICE - Service Cards */
+.services-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.service-card {
+    /* REQUIRED BOX MODEL RULES */
+    padding: 20px;           /* Space inside */
+    margin: 15px;            /* Space outside */
+    border: 2px solid #0d47a1; /* Border */
+    box-sizing: border-box;   /* Keeps size consistent */
+    
+    border-radius: 10px;      /* Rounded corners */
+    width: 250px;
+    text-align: center;
+}
+
+/* Descendant Selector */
+.service-card p {
+    color: #555;
+}
+
+/* ID Selector */
+#contact {
+    padding: 50px;
+    text-align: center;
+}
+
+/* Attribute Selector */
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Pseudo-class Selector */
+button {
+    padding: 10px 20px;
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #0d47a1; /* Color change on hover */
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #0d47a1;
+    color: white;
+}

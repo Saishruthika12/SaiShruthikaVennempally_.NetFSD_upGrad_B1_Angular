@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="stylessss.css">
+    <title>SecureBank Dashboard</title>
+    
+    <style>
+        #account-balance {
+            color: #2ecc71;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>SecureBank</h1>
+        <nav class="sidebar">
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Transactions</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div style="background-color: #fce4e4; border: 1px solid #f44336; padding: 10px; margin-bottom: 20px;">
+            <strong>Warning:</strong> Please update your KYC details.
+        </div>
+
+        <section class="summary-container">
+            <div class="card" id="main-card">
+                <h3>Account Summary</h3>
+                <p>Balance: <span id="account-balance">$12,450.00</span></p>
+            </div>
+        </section>
+
+        <table id="transactions">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="credit"><td>2026-02-18</td><td>Salary Deposit</td><td>+$5000</td></tr>
+                <tr class="debit"><td>2026-02-17</td><td>Grocery Store</td><td>-$150</td></tr>
+            </tbody>
+        </table>
+
+        <form id="login-form">
+            <input type="password" placeholder="Confirm PIN">
+            <button type="submit">Unlock Settings</button>
+        </form>
+    </main>
+
+    <footer>&copy; 2026 SecureBank Inc.</footer>
+</body>
+</html>

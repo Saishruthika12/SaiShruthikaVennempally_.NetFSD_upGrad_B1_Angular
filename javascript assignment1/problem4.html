@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Number Analysis Tool</title>
+</head>
+<body>
+    <h1>Check the Console (F12) for Results</h1>
+
+    <script>
+        let myNumber = 7; 
+        let positivity = (myNumber >= 0) ? "Positive" : "Negative";
+        console.log("Analysis for Number: " + myNumber);
+        console.log("Positivity: " + positivity);
+        if (myNumber % 2 === 0) {
+            console.log("Parity: Even");
+        } else {
+            console.log("Parity: Odd");
+        }
+        console.log("Counting from 1 to " + myNumber + ":");
+        for (let i = 1; i <= myNumber; i++) {
+            console.log(i);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Discount Calculator</h1>
+    <div id="main-output"></div>
+
+    <script>
+        let purchaseAmount = 5500; 
+        let discountPercent = 0;
+        if (purchaseAmount >= 5000) {
+            discountPercent = 20;
+        } else if (purchaseAmount >= 3000) {
+            discountPercent = 10;
+        } else {
+            discountPercent = 0;
+        }
+        let discountAmount = (purchaseAmount * discountPercent) / 100;
+        let finalAmount = purchaseAmount - discountAmount;
+        document.getElementById('main-output').innerHTML = 
+            "Purchase Amount: " + purchaseAmount + "<br>" +
+            "Discount Amount: " + discountAmount + "<br>" +
+            "Final Payable Amount: " + finalAmount;
+            
+        console.log("Final Amount:", finalAmount);
+    </script>
+</body>
+</html>

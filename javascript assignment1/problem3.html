@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traffic Signal Simulator</title>
+</head>
+<body>
+    <h1>Traffic Signal Simulator (Level-2)</h1>
+    <p>Check the <b>Console</b> to see the output.</p>
+
+    <script>
+        let signal = "red"; 
+        switch (signal.toLowerCase()) {
+            case "red":
+                console.log("Stop");
+                break;
+
+            case "yellow":
+                console.log("Get Ready");
+                break;
+
+            case "green":
+                console.log("Go");
+                break;
+            default:
+                console.log("Invalid Signal: Please use red, yellow, or green.");
+        }
+    </script>
+</body>
+</html>

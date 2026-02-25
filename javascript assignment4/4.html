@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Payroll System</title>
+</head>
+<body>
+    <h1>Employee Payroll System</h1>
+    
+    <div id="results"></div>
+    <div id="employeeTable"></div>
+
+    <script>
+    let employees = [
+        { id:1, name:"Ravi", dept:"IT", salary:70000 },
+        { id:2, name:"Anita", dept:"HR", salary:50000 },
+        { id:3, name:"Karan", dept:"IT", salary:80000 },
+        { id:4, name:"Meena", dept:"Finance", salary:60000 }
+    ];
+
+    let resultsDiv = document.getElementById('results');
+    let totalSalary = employees.reduce((sum, emp) => sum + emp.salary, 0);
+    let highestPaid = employees.reduce((prev, emp) => emp.salary > prev.salary ? emp : prev);
+    let lowestPaid = employees.reduce((prev, emp) => emp.salary < prev.salary ? emp : prev);
+    employees = employees.map(emp => emp.dept === "IT" ? {...emp, salary: emp.salary * 1.15} : emp);
+    let deptGroups = employees.reduce((groups, emp) => {
+        if(!groups[emp.dept]) groups[emp.dept] = [];
+        groups[emp.dept].push(emp);
+        return groups;
+    }, {});
+    let deptAvgSalary = {};
+    for(let dept in deptGroups){
+        let total = deptGroups[dept].reduce((sum, emp) => sum + emp.salary, 0);
+        deptAvgSalary[dept] = total / deptGroups[dept].length;
+    }
+    let sortedEmployees = [...employees].sort((a,b) => b.salary - a.salary);
+    let employeesAfterTax = employees.map(emp => ({...emp, salaryAfterTax: emp.salary * 0.9}));
+    let avgSalary = employees.reduce((sum, emp) => sum + emp.salary, 0) / employees.length;
+    let aboveAvgEmployees = employees.filter(emp => emp.salary > avgSalary);
+    resultsDiv.innerHTML = `
+        <p><strong>Total Salary Expense:</strong> ${totalSalary.toFixed(2)}</p>
+        <p><strong>Highest Paid Employee:</strong> ${highestPaid.name} (${highestPaid.salary.toFixed(2)})</p>
+        <p><strong>Lowest Paid Employee:</strong> ${lowestPaid.name} (${lowestPaid.salary.toFixed(2)})</p>
+        <p><strong>Department-wise Average Salary:</strong> ${JSON.stringify(deptAvgSalary)}</p>
+        <p><strong>Employees earning above average:</strong> ${aboveAvgEmployees.map(e => e.name).join(', ')}</p>
+    `;
+    let tableHTML = `<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <th>ID</th><th>Name</th><th>Department</th><th>Salary</th><th>Salary After Tax</th>
+    </tr>
+    ${employeesAfterTax.map(emp => `<tr>
+        <td>${emp.id}</td>
+        <td>${emp.name}</td>
+        <td>${emp.dept}</td>
+        <td>${emp.salary.toFixed(2)}</td>
+        <td>${emp.salaryAfterTax.toFixed(2)}</td>
+    </tr>`).join('')}
+    </table>`;
+
+    document.getElementById('employeeTable').innerHTML = tableHTML;
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Location-Based Weather Logger</title>
+</head>
+<body>
+  <h2>📍 My Location</h2>
+  <button onclick="getLocation()">Get My Location</button>
+
+  <p id="current">Latitude: --, Longitude: --</p>
+
+  <h3>Location History (Last 5)</h3>
+  <ul id="history"></ul>
+
+  <script>
+    window.onload = function() {
+      displayHistory();
+    }
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success, error, {timeout:10000});
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+    function success(position) {
+      const lat = position.coords.latitude.toFixed(6);
+      const lon = position.coords.longitude.toFixed(6);
+      document.getElementById('current').textContent = `Latitude: ${lat}, Longitude: ${lon}`;
+      let history = JSON.parse(localStorage.getItem('locations')) || [];
+      history.unshift({latitude: lat, longitude: lon, time: new Date().toLocaleString()});
+      if(history.length > 5) history.pop();
+      localStorage.setItem('locations', JSON.stringify(history));
+      displayHistory();
+    }
+    function error(err) {
+      switch(err.code) {
+        case 1:
+          alert("❌ Permission denied");
+          break;
+        case 2:
+          alert("⚠️ Position unavailable");
+          break;
+        case 3:
+          alert("⏱ Timeout occurred");
+          break;
+      }
+    }
+    function displayHistory() {
+      const history = JSON.parse(localStorage.getItem('locations')) || [];
+      const ul = document.getElementById('history');
+      ul.innerHTML = '';
+
+      history.forEach(loc => {
+        const li = document.createElement('li');
+        li.textContent = `${loc.time} → Latitude: ${loc.latitude}, Longitude: ${loc.longitude}`;
+        ul.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>

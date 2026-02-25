@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Form Validation</title>
+</head>
+<body>
+    <h1>Registration Form</h1>
+
+    <form id="regForm">
+        Name: <input type="text" id="name" onchange="validateName()"><br>
+        <span id="nameMsg"></span><br>
+        Email: <input type="text" id="email" onchange="validateEmail()"><br>
+        <span id="emailMsg"></span><br>
+        Age: <input type="number" id="age" onchange="validateAge()"><br>
+        <span id="ageMsg"></span><br><br>
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+    <h3>Stored User Data (SessionStorage):</h3>
+    <div id="storedData"></div>
+
+    <script>
+        function validateName() {
+            let name = document.getElementById('name').value;
+            if (name.trim() === "") {
+                document.getElementById('nameMsg').innerText = "Name cannot be empty";
+                return false;
+            } else {
+                document.getElementById('nameMsg').innerText = "";
+                return true;
+            }
+        }
+        function validateEmail() {
+            let email = document.getElementById('email').value;
+            if (!email.includes("@")) {
+                document.getElementById('emailMsg').innerText = "Email must contain '@'";
+                return false;
+            } else {
+                document.getElementById('emailMsg').innerText = "";
+                return true;
+            }
+        }
+        function validateAge() {
+            let age = parseInt(document.getElementById('age').value);
+            if (isNaN(age) || age <= 18) {
+                document.getElementById('ageMsg').innerText = "Age must be greater than 18";
+                return false;
+            } else {
+                document.getElementById('ageMsg').innerText = "";
+                return true;
+            }
+        }
+        function submitForm() {
+            let isNameValid = validateName();
+            let isEmailValid = validateEmail();
+            let isAgeValid = validateAge();
+
+            if (isNameValid && isEmailValid && isAgeValid) {
+                let user = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    age: document.getElementById('age').value
+                };
+
+                sessionStorage.setItem('user', JSON.stringify(user));
+
+                document.getElementById('storedData').innerText = 
+                    "Name: " + user.name + ", Email: " + user.email + ", Age: " + user.age;
+
+                alert("User data stored successfully!");
+            } else {
+                alert("Please fix errors before submitting.");
+            }
+        }
+        window.onload = function() {
+            let storedUser = sessionStorage.getItem('user');
+            if (storedUser) {
+                let user = JSON.parse(storedUser);
+                document.getElementById('name').value = user.name;
+                document.getElementById('email').value = user.email;
+                document.getElementById('age').value = user.age;
+                document.getElementById('storedData').innerText = 
+                    "Name: " + user.name + ", Email: " + user.email + ", Age: " + user.age;
+            }
+        }
+    </script>
+</body>
+</html>
